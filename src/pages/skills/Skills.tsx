@@ -1,5 +1,5 @@
 import "./Skills.scss";
-import { useEffect, useRef, useState } from "react";
+// import { useEffect, useRef, useState } from "react";
 
 export const Skills = () => {
   return (

@@ -1,8 +1,8 @@
 import "./Main.scss";
 import { useEffect, useState, useRef } from "react";
-import { useSetRecoilState } from "recoil";
+// import { useSetRecoilState } from "recoil";
+// import { isLoadingState } from "@recoil/atoms/loadingState";
 import MakeToast from "@hooks/MakeToast";
-import { isLoadingState } from "@recoil/atoms/loadingState";
 import MainTypingText from "@components/mainTyping/MainTypingText";
 import ImgGalaga from "@assets/images/galaga.png";
 import ImgGalagaEnemy from "@assets/images/galaga_enemy.png";
@@ -10,7 +10,7 @@ import { useRouter } from "@hooks/useRouter";
 
 function Main() {
   const router = useRouter();
-  const setLoading = useSetRecoilState(isLoadingState);
+  // const setLoading = useSetRecoilState(isLoadingState);
   const [mainScore, setMainScore] = useState(() => {
     const storedScore = localStorage.getItem("MAIN_SCORE");
     return storedScore ? storedScore : "000000";
@@ -18,6 +18,11 @@ function Main() {
 
   const galagaRef = useRef<HTMLImageElement>(null);
   const bulletRef = useRef<HTMLDivElement>(null);
+
+  const movePage = (type: string) => {
+    MakeToast("success", `페이지 이동 => ${type.toUpperCase()}`);
+    router.push(`/${type}`);
+  };
 
   useEffect(() => {
     const handleClick = () => {
@@ -77,12 +82,8 @@ function Main() {
       document.removeEventListener("click", handleClick);
       document.removeEventListener("mousemove", handleMouseMove);
     };
+    // eslint-disable-next-line
   }, []);
-
-  const movePage = (type: string) => {
-    MakeToast("success", `페이지 이동 => ${type.toUpperCase()}`);
-    router.push(`/${type}`);
-  };
 
   return (
     <div className="page-main">

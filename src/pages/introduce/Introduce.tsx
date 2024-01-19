@@ -1,5 +1,5 @@
 import "./Introduce.scss";
-import { useEffect, useRef, useState } from "react";
+// import { useEffect, useRef, useState } from "react";
 
 export const Introduce = () => {
   return (
