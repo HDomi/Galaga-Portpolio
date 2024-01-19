@@ -13,7 +13,9 @@ export const MainTypingText = () => {
   const [allFin, setAllFin] = useState<boolean>(false);
   const skipIntro = () => {
     setAllFin(true);
-    localStorage.setItem("FIRST_LOAD_FIN", "FIN");
+    setTimeout(() => {
+      localStorage.setItem("FIRST_LOAD_FIN", "FIN");
+    }, 500);
   };
 
   useEffect(() => {

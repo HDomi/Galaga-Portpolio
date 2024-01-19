@@ -16,7 +16,6 @@ function Main() {
     const storedScore = localStorage.getItem("MAIN_SCORE");
     return storedScore ? storedScore : "000000";
   });
-  const isCantClick = localStorage.getItem("FIRST_LOAD_FIN") !== "FIN";
 
   const galagaRef = useRef<HTMLImageElement>(null);
   const bulletRef = useRef<HTMLDivElement>(null);
@@ -28,7 +27,7 @@ function Main() {
 
   useEffect(() => {
     const handleClick = () => {
-      if (isCantClick) return;
+      if (localStorage.getItem("FIRST_LOAD_FIN") !== "FIN") return;
       setMainScore((prevScore) => {
         const incrementedScore = parseInt(prevScore) + 1;
         const newScore = incrementedScore.toString().padStart(6, "0");
