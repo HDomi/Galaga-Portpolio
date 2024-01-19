@@ -40,11 +40,11 @@ function Main() {
           for (let i = 0; i < categoryItems.length; i++) {
             const categoryItem = categoryItems[i] as HTMLElement;
             const rect = categoryItem.getBoundingClientRect();
-
             if (
               bullet.offsetTop <= rect.bottom - 40 &&
-              bullet.offsetLeft >= rect.left - 50 &&
-              bullet.offsetLeft <= rect.right - 50
+              bullet.offsetLeft >= rect.left - 45 &&
+              bullet.offsetLeft <= rect.right - 45 &&
+              bullet.offsetTop >= rect.top
             ) {
               bullet.style.display = "none";
               clearInterval(bulletInterval);
@@ -80,21 +80,18 @@ function Main() {
   }, []);
 
   const movePage = (type: string) => {
-    MakeToast("페이지 이동", type);
+    MakeToast("success", `페이지 이동 => ${type.toUpperCase()}`);
     router.push(`/${type}`);
   };
 
   return (
     <div className="page-main">
       {MainTypingText()}
-      <div id="stars"></div>
-      <div id="stars2"></div>
-      <div id="stars3"></div>
       <div className="main-header flex-row">
-        <p className="up-text">1UP</p>
+        <p className="up-text">HJY</p>
         <p className="score-text">{mainScore}</p>
       </div>
-      <div className="page-wrap">
+      <div className="page-wrap flex-col">
         <div className="category-wrap flex-row">
           <div className="category-item introduce">
             <p>소개</p>

@@ -11,6 +11,9 @@ function App() {
   return (
     <RecoilRoot>
       <div className="App">
+        <div id="stars"></div>
+        <div id="stars2"></div>
+        <div id="stars3"></div>
         <Loading />
         <BrowserRouter>
           <Toaster position="top-center" reverseOrder={false} />
