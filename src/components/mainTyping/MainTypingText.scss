@@ -1,5 +1,5 @@
 .typing-wrap {
-  position: absolute;
+  position: fixed;
   z-index: 999;
   width: 100%;
   height: 100%;
@@ -9,6 +9,9 @@
   align-items: center;
   justify-content: center;
   background: var(--main-bg);
+  .skip-btn {
+    margin-top: 15px;
+  }
 }
 .typing-text {
   color: var(--main-color);

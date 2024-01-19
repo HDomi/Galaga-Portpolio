@@ -4,12 +4,17 @@ import { useEffect, useState, useRef } from "react";
 export const MainTypingText = () => {
   const [helloText, setHelloText] = useState<string>("");
   const currentIndex = useRef(0);
-  const welcomeText: string = "안녕하세요.  황재영입니다...";
-  const welcomeText2: string = "제  포트폴리오에  오신  것을  환영합니다..!";
-  const totalText = welcomeText + welcomeText2;
+  const welcomeText: string = "안녕하세요. 황재영입니다...";
+  const welcomeText2: string = "제 포트폴리오에 오신 것을 환영합니다..!";
+  const totalText = `${welcomeText}${welcomeText2}`;
 
+  const [isFirstFin, setIsFirstFin] = useState<boolean>(false);
   const isFin = localStorage.getItem("FIRST_LOAD_FIN") === "FIN";
   const [allFin, setAllFin] = useState<boolean>(false);
+  const skipIntro = () => {
+    setAllFin(true);
+    localStorage.setItem("FIRST_LOAD_FIN", "FIN");
+  };
 
   useEffect(() => {
     if (isFin || allFin) return;
@@ -20,6 +25,7 @@ export const MainTypingText = () => {
           currentIndex.current += 1;
           if (newState === welcomeText) {
             clearInterval(timerId);
+            setIsFirstFin(true);
             setTimeout(() => {
               currentIndex.current = 0;
               setHelloText("");
@@ -58,12 +64,17 @@ export const MainTypingText = () => {
 
   if (allFin || isFin) return null;
   return (
-    <div className="typing-wrap">
+    <div className="typing-wrap flex-col">
       <div
         className={`typing-text ${helloText === totalText ? "fin-type" : ""}`}
       >
         {helloText}
       </div>
+      {isFirstFin && (
+        <button className="btn skip-btn" onClick={() => skipIntro()}>
+          SKIP
+        </button>
+      )}
     </div>
   );
 };

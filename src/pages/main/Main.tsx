@@ -6,6 +6,7 @@ import MakeToast from "@hooks/MakeToast";
 import MainTypingText from "@components/mainTyping/MainTypingText";
 import ImgGalaga from "@assets/images/galaga.png";
 import ImgGalagaEnemy from "@assets/images/galaga_enemy.png";
+import ImgGalagaEnemyBoss from "@assets/images/galaga_enemy_boss.png";
 import { useRouter } from "@hooks/useRouter";
 
 function Main() {
@@ -15,6 +16,7 @@ function Main() {
     const storedScore = localStorage.getItem("MAIN_SCORE");
     return storedScore ? storedScore : "000000";
   });
+  const isCantClick = localStorage.getItem("FIRST_LOAD_FIN") !== "FIN";
 
   const galagaRef = useRef<HTMLImageElement>(null);
   const bulletRef = useRef<HTMLDivElement>(null);
@@ -26,6 +28,7 @@ function Main() {
 
   useEffect(() => {
     const handleClick = () => {
+      if (isCantClick) return;
       setMainScore((prevScore) => {
         const incrementedScore = parseInt(prevScore) + 1;
         const newScore = incrementedScore.toString().padStart(6, "0");
@@ -95,19 +98,15 @@ function Main() {
       <div className="page-wrap flex-col">
         <div className="category-wrap flex-row">
           <div className="category-item introduce">
-            <p>소개</p>
-            <img src={ImgGalagaEnemy} alt="" />
-          </div>
-          <div className="category-item skills">
-            <p>스킬</p>
+            <p>&gt; 소개 &lt;</p>
             <img src={ImgGalagaEnemy} alt="" />
           </div>
           <div className="category-item portpolio">
-            <p>포트폴리오</p>
-            <img src={ImgGalagaEnemy} alt="" />
+            <p>&gt; 포트폴리오 &lt;</p>
+            <img src={ImgGalagaEnemyBoss} className="boss" alt="" />
           </div>
-          <div className="category-item not-yet">
-            <p>미정</p>
+          <div className="category-item skills">
+            <p>&gt; 스킬 &lt;</p>
             <img src={ImgGalagaEnemy} alt="" />
           </div>
         </div>
