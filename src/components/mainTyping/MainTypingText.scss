@@ -1,0 +1,36 @@
+.typing-wrap {
+  position: absolute;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--main-bg);
+}
+.typing-text {
+  color: var(--main-color);
+  font-size: 20px;
+  &::after {
+    content: "|";
+    animation: blink 0.5s infinite;
+  }
+  &.fin-type {
+    &::after {
+      content: "";
+    }
+  }
+}
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
