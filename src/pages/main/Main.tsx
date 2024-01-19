@@ -49,7 +49,7 @@ function Main() {
             const rect = categoryItem.getBoundingClientRect();
             if (
               bullet.offsetTop <= rect.bottom - 40 &&
-              bullet.offsetLeft >= rect.left - 45 &&
+              bullet.offsetLeft >= rect.left &&
               bullet.offsetLeft <= rect.right - 45 &&
               bullet.offsetTop >= rect.top
             ) {
