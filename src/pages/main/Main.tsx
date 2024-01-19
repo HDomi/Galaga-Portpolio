@@ -95,6 +95,29 @@ function Main() {
         <p className="score-text">{mainScore}</p>
       </div>
       <div className="page-wrap flex-col">
+        <div className="category-wrap-for-mobile flex-col">
+          <div
+            className="category-mobile-item introduce"
+            onClick={() => movePage("introduce")}
+          >
+            <img src={ImgGalagaEnemy} alt="" />
+            <p>&gt; 소개 &lt;</p>
+          </div>
+          <div
+            className="category-mobile-item portpolio"
+            onClick={() => movePage("portpolio")}
+          >
+            <img src={ImgGalagaEnemyBoss} className="boss" alt="" />
+            <p>&gt; 포트폴리오 &lt;</p>
+          </div>
+          <div
+            className="category-mobile-item skills"
+            onClick={() => movePage("skills")}
+          >
+            <img src={ImgGalagaEnemy} alt="" />
+            <p>&gt; 스킬 &lt;</p>
+          </div>
+        </div>
         <div className="category-wrap flex-row">
           <div className="category-item introduce">
             <p>&gt; 소개 &lt;</p>

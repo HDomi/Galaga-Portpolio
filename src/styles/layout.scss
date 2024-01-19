@@ -180,6 +180,8 @@ button {
   font-weight: 500;
   box-shadow: 2px 2px 4px 0px #1020371f;
   align-items: center;
+  z-index: 99999;
+  background: var(--main-bg);
   svg {
     margin-right: 6px;
   }

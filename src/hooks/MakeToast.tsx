@@ -22,10 +22,7 @@ export const MakeToast = (toastType: string, text: string) => {
     }
   };
   toast.custom((t) => (
-    <div
-      className="toast-wrap flex-row"
-      style={{ background: "rgba(0,0,0,0)" }}
-    >
+    <div className="toast-wrap flex-row" style={{ background: "#161616" }}>
       {getIcon(toastType)}
       <p>{text}</p>
     </div>
